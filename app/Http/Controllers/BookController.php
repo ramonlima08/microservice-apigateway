@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Service\BookService;
+use App\Services\BookService;
 use App\Traits\ApiResponser;
 use Illuminate\Http\Request;
 
