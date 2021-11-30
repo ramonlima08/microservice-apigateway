@@ -32,19 +32,19 @@ class BookController extends Controller
         return $this->successResponse($this->bookService->createBooks($request->all()), Response::HTTP_CREATED);
     }
 
-    public function show($author)   
+    public function show($book)   
     {
-        return $this->successResponse($this->bookService->obtainBook($author));
+        return $this->successResponse($this->bookService->obtainBook($book));
     }
 
-    public function update(Request $request, $author)
+    public function update(Request $request, $book)
     {
-        return $this->successResponse($this->bookService->editBook($request->all(), $author));
+        return $this->successResponse($this->bookService->editBook($request->all(), $book));
     }
 
-    public function destroy($author)
+    public function destroy($book)
     {
-        return $this->successResponse($this->bookService->deleteBook($author));
+        return $this->successResponse($this->bookService->deleteBook($book));
     }
 
     

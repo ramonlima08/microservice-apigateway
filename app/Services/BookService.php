@@ -25,19 +25,19 @@ class BookService
         return $this->performRequest('POST', '/books', $data);
     }
 
-    public function obtainBook($author)
+    public function obtainBook($book)
     {
-        return $this->performRequest('GET', "/books/{$author}");
+        return $this->performRequest('GET', "/books/{$book}");
     }
 
-    public function editBook($data, $author)
+    public function editBook($data, $book)
     {
-        return $this->performRequest('PUT', "/books/{$author}", $data);
+        return $this->performRequest('PUT', "/books/{$book}", $data);
     }
 
-    public function deleteBook($author)
+    public function deleteBook($book)
     {
-        return $this->performRequest('DELETE', "/books/{$author}");
+        return $this->performRequest('DELETE', "/books/{$book}");
     }
 
 }
