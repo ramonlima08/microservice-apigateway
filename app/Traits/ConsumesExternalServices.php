@@ -13,6 +13,10 @@ trait ConsumesExternalServices
             'base_uri' => $this->baseUri,
         ]);
 
+        if (isset($this->secret)) {
+            $headers['Authorization'] = $this->secret;
+        }
+
         $response = $client->request(
             $method, 
             $requestUrl, 
