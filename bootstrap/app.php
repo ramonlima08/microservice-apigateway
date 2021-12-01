@@ -108,9 +108,14 @@ $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
 
-#98ggvRi92yluuKtRnjHpbXmXZ2lB7nPdzIEW1QsD
-#wBlYtUoVFfdUVRkBQX54HWsGDSKYMUztMmNGDT54
-#Z5Fg8fLo0QQrtAMs0ftC2C1OX8Ea0u0u5wWeUOqL
+
+/*
+| Client ID: 1
+| Client secret: ID7Ll0kHYQjxNiiAniVosAWYpCwGjiBgJIJK8hml
+| Password grant client created successfully.
+| Client ID: 2
+| Client secret: aOsyrfeP3ArtTNCU0Ch0MpcrJCNGjP6qytH8L2Lc
+*/
 
 /*
 |--------------------------------------------------------------------------
