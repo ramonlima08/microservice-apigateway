@@ -87,6 +87,10 @@ $app->configure('app');
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
 
+$app->routeMiddleware([
+    'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+]);
+
 /*
 |--------------------------------------------------------------------------
 | Register Service Providers

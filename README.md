@@ -150,3 +150,31 @@ Faça um teste nos endpoints referente as litages de authors e books no gateway
 
 ### Configurar o Midddleware
 
+Altere o arquivo ```bootstrap/app.php```
+
+
+```php
+/*
+|--------------------------------------------------------------------------
+| Register Middleware
+|--------------------------------------------------------------------------
+|
+*/
+
+$app->routeMiddleware([
+    'client.credentials' => Laravel\Passport\Http\Middleware\CheckClientCredentials::class,
+]);
+
+```
+
+### Protegendo as rotas
+
+Altere o arquivo ```routes\web.php```
+
+```php
+$router->group(['middleware' => 'client.credentials'], function() use ($router) { 
+    #ROTAS
+    #ROTAS
+    #ROTAS
+});
+```
