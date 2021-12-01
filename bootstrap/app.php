@@ -32,6 +32,7 @@ $app->withEloquent();
  */
 
 $app->configure('services');
+$app->configure('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -102,6 +103,10 @@ $app->configure('app');
 $app->register(App\Providers\AuthServiceProvider::class);
 $app->register(Laravel\Passport\PassportServiceProvider::class);
 $app->register(Dusterio\LumenPassport\PassportServiceProvider::class);
+
+#98ggvRi92yluuKtRnjHpbXmXZ2lB7nPdzIEW1QsD
+#wBlYtUoVFfdUVRkBQX54HWsGDSKYMUztMmNGDT54
+#Z5Fg8fLo0QQrtAMs0ftC2C1OX8Ea0u0u5wWeUOqL
 
 /*
 |--------------------------------------------------------------------------

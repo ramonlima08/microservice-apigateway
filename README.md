@@ -22,3 +22,131 @@ If you discover a security vulnerability within Lumen, please send an e-mail to 
 ## License
 
 The Lumen framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+
+## Instalando o Lument Passport
+
+GitHub [dusterio/lumen-passport](https://github.com/dusterio/lumen-passport)
+
+### Via composer
+
+```bash
+$ composer require dusterio/lumen-passport
+```
+
+### Configurações
+
+Altere o arquivo ```bootstrap/app.php```
+
+```php
+
+// $app->register(App\Providers\EventServiceProvider::class);
+// $app->register(App\Providers\AppServiceProvider::class);
+$app->register(App\Providers\AuthServiceProvider::class);                   //Descomentar
+$app->register(Laravel\Passport\PassportServiceProvider::class);            //Criar
+$app->register(Dusterio\LumenPassport\PassportServiceProvider::class);      //Criar
+
+```
+
+### Migrate and install Laravel Passport
+
+```bash
+# Create new tables for Passport
+php artisan migrate
+
+# Install encryption keys and other necessary stuff for Passport
+php artisan passport:install
+```
+
+Após rodar o passport:install será criado as chaves publica e privada em storage. Altere o arquivo ```.gitignore``` para não tornar essas chaves públicas.
+
+```text
+
+storage/*.key
+
+```
+
+### Configurações 
+
+Altere o arquivo ```App\Providers\AuthServiceProvider```
+
+```php
+
+use Dusterio\LumenPassport\LumenPassport;
+
+## code
+
+public function boot()
+{
+    // Here you may define how you wish users to be authenticated for your Lumen
+    // application. The callback which receives the incoming request instance
+    // should return either a User instance or null. You're free to obtain
+    // the User instance via an API token or any other method necessary.
+
+    // $this->app['auth']->viaRequest('api', function ($request) {
+    //     if ($request->input('api_token')) {
+    //         return User::where('api_token', $request->input('api_token'))->first();
+    //     }
+    // });
+
+    LumenPassport::routes($this->app->router);
+}
+
+```
+
+Copie o conteúdo do arquivo ```vendor\laravel\lumen-framework\config\auth.php```
+
+Crie um arquivo chamado ```config\auth.php``` e cole o conteúdo copiado nesse arquivo.
+
+Agora faça as seguintes alterações no arquivo criado.
+
+```php
+
+    /*
+    |--------------------------------------------------------------------------
+    | Authentication Guards
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'guards' => [
+        'api' => [
+            'driver' => 'passport',
+            'provider' => 'users',
+        ],
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User Providers
+    |--------------------------------------------------------------------------
+    |
+    */
+
+    'providers' => [
+        'users' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\User::class,
+        ]
+    ],
+
+```
+
+Altere novamente o arquivo ```bootstrap/app.php```
+
+```php
+
+/**
+ * Register config files
+ */
+
+$app->configure('services');
+$app->configure('auth');            //Adicionar
+
+```
+
+Faça um teste nos endpoints referente as litages de authors e books no gateway
+
+
+### Configurar o Midddleware
+
